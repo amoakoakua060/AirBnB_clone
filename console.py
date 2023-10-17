@@ -168,7 +168,6 @@ class HBNBCommand(cmd.Cmd):
         if arguments[0] != "" and arguments[0] not in cls_names:
             print("** class doesn't exist **")
             return
- 
         print(get_objs(arguments))
 
     def do_destroy(self, command):
@@ -222,7 +221,8 @@ class HBNBCommand(cmd.Cmd):
         elif command not in cls_names.keys():
             print("** class doesn't exist **")
         else:
-            instance = cls_names[command]
+            instance = (cls_names[command])()
+            print(command, instance)
             instance.save()
             print(instance.id)
 

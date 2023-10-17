@@ -30,6 +30,7 @@ def getCls(key):
         return Amenity
     elif "review" in key:
         return Review
+    return BaseModel
 
 
 class FileStorage():
@@ -79,7 +80,4 @@ class FileStorage():
             FileStorage.__objects = {}
             for key, value in objects_dict.items():
                 cls = getCls(key)
-                if (cls is not None):
-                    filestorage.__objects[key] = cls(**objects_dict[key])
-                    continue
-                FileStorage.__objects[key] = BaseModel(**objects_dict[key])
+                FileStorage.__objects[key] = cls(**objects_dict[key])
